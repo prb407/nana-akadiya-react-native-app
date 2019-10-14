@@ -75,6 +75,7 @@ class FamilyScreen extends React.Component {
         return (
             <List style={{ marginTop: 30 }}>
                 {this.state.list.map((listItem, index) => {
+                    console.log(listItem.family_display)
                     const color = gradiantColors[3]
                     return (
                         <ListItem key={listItem._id}

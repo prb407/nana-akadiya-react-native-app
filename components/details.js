@@ -91,7 +91,7 @@ class Details extends Component {
                     && child.length !== 0
                     && <List>
                         <ListItem itemDivider>
-                            <Text>Family members</Text>
+                            <Text>પરિવારના સદસ્યો</Text>
                         </ListItem>
                         {child.map((listItem) => {
                             return (

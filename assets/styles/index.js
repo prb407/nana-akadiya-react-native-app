@@ -10,13 +10,14 @@ export default styles = StyleSheet.create({
     },
     homeItem: {
         marginTop: '5%',
-        width: '42%' // is 50% of container width
+        width: '42%', // is 50% of container width
+        alignContent: 'center'
     },
     homeItemLeft: {
-        marginLeft: '7%',
+        marginLeft: '6%',
     },
     homeItemRight: {
-        marginRight: '7%',
+        marginRight: '6%',
     },
     detailsContainer: {
         flex: 1,

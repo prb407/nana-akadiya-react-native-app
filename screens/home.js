@@ -17,21 +17,24 @@ class HomeScreen extends React.Component {
             <ScrollView>
                 <View style={styles.homeContainer}>
                     <View style={[styles.homeItem, styles.homeItemLeft]} style={{ backgroundColor: 'red', justifyContent: 'center' }}>
-                        <TouchableOpacity onPress={() => { navigation.navigate('Contacts') }} style={{ width: 150 }}>
-                            <Ionicons name="ios-contact" size={120} color="#368EB9" />
-                            <Text>સંપર્કો</Text>
+                        <TouchableOpacity onPress={() => { navigation.navigate('Contacts') }}>
+                            <Image
+                                // style={{ width: 150, height: 150 }}
+                                source={require('../assets/images/ic_contact.png')} />
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.homeItem, styles.homeItemRight]} >
                         <TouchableOpacity onPress={() => { navigation.navigate('Family') }}>
-                            <Ionicons name="ios-contacts" size={120} color="#368EB9" />
-                            <Text>પરિવારો</Text>
+                            <Image
+                                // style={{ width: 150, height: 150 }}
+                                source={require('../assets/images/ic_sanstha.png')} />
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.homeItem, styles.homeItemLeft, { marginTop: 20 }]} onPress={() => { navigation.navigate('About') }}>
                         <TouchableOpacity onPress={() => { navigation.navigate('Family') }}>
-                            <Ionicons name="ios-information-circle-outline" size={120} color="#368EB9" />
-                            <Text>સંસ્થા ની મહિતી</Text>
+                            <Image
+                                // style={{ width: 150, height: 150 }}
+                                source={require('../assets/images/ic_other.png')} />
                         </TouchableOpacity>
                     </View>
                 </View>

@@ -3,6 +3,7 @@ import { View, Platform } from 'react-native'
 import { List, ListItem, Thumbnail, Text, Right, Icon, Body, Button } from 'native-base';
 import call from 'react-native-phone-call';
 import { ScrollView } from 'react-native-gesture-handler';
+import { withNavigation } from 'react-navigation';
 class Details extends Component {
     _call = number => {
         //handler to make a call
@@ -21,13 +22,13 @@ class Details extends Component {
             ios: `${scheme}${label}@${latLng}`,
             android: `${scheme}${latLng}(${label})`
         });
-
-
         Linking.openURL(url);
     }
     render() {
         const { data, child } = this.props
-        console.log(data)
+        const navigation = this.props.navigation
+
+
         return (
             <ScrollView>
                 <View style={{
@@ -49,12 +50,20 @@ class Details extends Component {
                     <Text style={{
                         textTransform: 'capitalize',
                         fontSize: 28
-                    }}>{data.name_display + ' ' + data.family_id.family_display}</Text>
+                    }}>{data.name_display + ' ' + data.family_display.family_display}</Text>
                 </View>
                 <View style={{ marginTop: 5 }}>
                     <List>
                         <ListItem itemDivider>
                             <Text style={{ fontSize: 20 }}>વિગત</Text>
+                            <Button onPress={() => {
+                                navigation.navigate('Edit', {
+                                    name: data.name_display,
+                                    id: data._id
+                                })
+                            }} style={{ borderRadius: 50 }}>
+                                <Icon name={Platform.OS === 'ios' ? 'ios-call' : 'md-call'} style={{ fontSize: 25 }} />
+                            </Button>
                         </ListItem>
                         {data.phone_number && <ListItem>
                             <Body>
@@ -97,9 +106,8 @@ class Details extends Component {
                             return (
                                 <ListItem key={listItem._id} >
                                     <Body style={{ paddingTop: 5, paddingBottom: 5 }} >
-                                        <Text style={{ textTransform: 'capitalize', fontSize: 20 }}>{listItem.name_display + ' ' + data.family_id.family_display}</Text>
+                                        <Text style={{ textTransform: 'capitalize', fontSize: 20 }}>{listItem.name_display + ' ' + data.family_display.family_display}</Text>
                                         {listItem.phone_number ? <Text note style={{ fontWeight: 'bold' }}>મોબાઇલ : <Text style={{ fontWeight: 'normal' }}>{listItem.phone_number}</Text></Text> : <></>}
-
                                         <Text note style={{ fontWeight: 'bold' }}>સંબંધ : <Text style={{ fontWeight: 'normal' }}>{listItem.relation_display}</Text></Text>
                                         <Text note style={{ fontWeight: 'bold' }}>વ્યવસાય : <Text style={{ fontWeight: 'normal' }}>{listItem.work}</Text></Text>
                                     </Body>
@@ -108,17 +116,19 @@ class Details extends Component {
                                             <Icon name={Platform.OS === 'ios' ? 'ios-call' : 'md-call'} style={{ fontSize: 25 }} />
                                         </Button>
                                     </Right> : <></>}
+                                    <Button onPress={() => { }} style={{ borderRadius: 50 }}>
+                                        <Icon name={Platform.OS === 'ios' ? 'ios-call' : 'md-create'} style={{ fontSize: 25 }} />
+                                    </Button>
 
                                 </ListItem>
                             )
                         }
                         )}
                     </List>
-
                 }
             </ScrollView>
         )
     }
 }
 
-export default Details
+export default withNavigation(Details)

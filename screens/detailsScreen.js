@@ -1,6 +1,5 @@
 import React from 'react';
 import { Spinner, Container, Text } from 'native-base'
-import ListContacts from '../components/ListContacts'
 import axios from '../api'
 import { withNavigation } from 'react-navigation';
 import Details from '../components/details';
@@ -16,6 +15,7 @@ class DetailsScreen extends React.Component {
             loading: true,
             details: null,
             title: 'Detail',
+            work: {},
             childPersons: [],
             id: props.navigation.state.params.id
         }
@@ -32,6 +32,7 @@ class DetailsScreen extends React.Component {
                 console.log(res.data)
                 this.setState((state) => ({
                     details: res.data.personDetails,
+                    work: res.data.parentWork,
                     childPersons: res.data.childPersons,
                     loading: false,
                     error: false
@@ -43,9 +44,6 @@ class DetailsScreen extends React.Component {
                 }))
                 console.log(error);
             })
-        // .finally(() => {
-        //     console.log('done')
-        // });
     }
     render() {
         if (this.state.loading && this.state.details === null) {

@@ -5,6 +5,7 @@ import HomeScreen from '../screens/home'
 import ContactScreen from '../screens/contacts'
 import DetailsScreen from '../screens/detailsScreen';
 import FamilyScreen from '../screens/family';
+import EditContact from '../screens/edit';
 const fadeAnimation = (index, position) => {
     const sceneRange = [index - 1, index]
     const outputRange = [0, 1]
@@ -56,10 +57,13 @@ const AppNavigator = createStackNavigator({
     },
     Family: {
         screen: FamilyScreen,
+    },
+    Edit: {
+        screen: EditContact,
     }
 }, {
     transitionConfig,
-    initialRouteName: 'Home',
+    initialRouteName: 'Contacts',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
         headerStyle: {

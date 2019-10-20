@@ -20,6 +20,9 @@ class EditContact extends Component {
         axios.post(url, data)
             .then(res => {
                 console.log(res)
+                this.setState({
+                    work: 'inserted'
+                })
             })
             .catch(error => {
                 console.log(error)

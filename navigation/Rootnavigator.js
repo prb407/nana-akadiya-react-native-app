@@ -63,7 +63,7 @@ const AppNavigator = createStackNavigator({
     }
 }, {
     transitionConfig,
-    initialRouteName: 'Contacts',
+    initialRouteName: 'Family',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
         headerStyle: {

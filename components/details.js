@@ -116,7 +116,12 @@ class Details extends Component {
                                             <Icon name={Platform.OS === 'ios' ? 'ios-call' : 'md-call'} style={{ fontSize: 25 }} />
                                         </Button>
                                     </Right> : <></>}
-                                    <Button onPress={() => { }} style={{ borderRadius: 50 }}>
+                                    <Button onPress={() => {
+                                        navigation.navigate('Edit', {
+                                            name: listItem.name_display,
+                                            id: listItem._id
+                                        })
+                                    }} style={{ borderRadius: 50 }}>
                                         <Icon name={Platform.OS === 'ios' ? 'ios-call' : 'md-create'} style={{ fontSize: 25 }} />
                                     </Button>
 
